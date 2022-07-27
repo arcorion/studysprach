@@ -83,14 +83,14 @@ class Flash_Cards:
             system('clear')
             english, german = random.choice(list(self.dictionary.items()))
             print("Frage ('quit now' to quit): ")
-            print(f"Uebersetzung fuer {english}? ", end="")
+            print(f"Übersetzung für \"{english}\"? ", end="")
             answer = input()
             if answer == german:
                 print("Sehr gut!")
             elif answer.lower() == 'quit now':
                 break
             else:
-                print(f"Falsch! Das richtige ist \"{german}\"")
+                print(f"Falsch! Das Richtige ist \"{german}\"")
             sleep(2)
 
     def save_dictionary(self):
