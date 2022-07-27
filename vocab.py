@@ -90,8 +90,8 @@ class Flash_Cards:
             elif answer.lower() == 'quit now':
                 break
             else:
-                print("FALSCH!")
-            sleep(1)
+                print(f"Falsch! Das richtige ist \"{german}\"")
+            sleep(2)
 
     def save_dictionary(self):
         """Save a copy of the deck to disk"""
