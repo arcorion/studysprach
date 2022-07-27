@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Command-line based vocab practice tool
 #
-# Stores vocab in a set made of tuples in the format {English, Deutsch}.
+# Basic flash card deck for English/German practice.
 import json
 import random
 
