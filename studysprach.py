@@ -41,9 +41,7 @@ class Flash_Cards:
     """
 
     def __init__(self):
-        dictionary_directory = 'data'
-        dictionary_file = 'dictionary.json'
-        self.dictionary_path = Path(dictionary_directory, dictionary_file)
+        self.dictionary_path = Path('data')
 
         self.dictionary = dict()
         self.load_dictionary()
@@ -100,14 +98,20 @@ class Flash_Cards:
 
     def save_dictionary(self):
         """Save a copy of the deck to disk"""
+        dictionary_file = self.dictionary_path / 'dictionary.json'
+        if not self.dictionary_path.exists():
+            self.dictionary_path.mkdir(parents=True)
 
-        with open(self.dictionary_path, 'w') as save_file:
+        dictionary_file.touch()
+        with dictionary_file.open('w') as save_file:
             json.dump(self.dictionary, save_file)
 
     def load_dictionary(self):
         """Load a copy of the deck from disk"""
-        if exists(self.dictionary_path) and stat(self.dictionary_path).st_size != 0:
-            with open(self.dictionary_path, 'r') as load_file:
+        dictionary_file = self.dictionary_path / 'dictionary.json'
+        if dictionary_file.exists() and \
+                dictionary_file.read_bytes() != 0:
+            with dictionary_file.open('r') as load_file:
                 self.dictionary = json.load(load_file)
 
     def menu(self):
